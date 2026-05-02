@@ -63,11 +63,26 @@ Outputs `fusion-plus\build\fusion-plus.dll` (~1.6 MB).
 
 ## Modules at a glance
 
-**Combat:** AimAssist · TriggerBot · KillAura · Reach · LeftAutoClicker · RightAutoClicker
+**Combat:** AimAssist · **TriggerBot** 🆕 · **KillAura** 🆕 · Reach · LeftAutoClicker · RightAutoClicker
 **Visual:** ESP · Radar · Nametag · BlockESP
 **Movement:** Sprint · SprintReset · BridgeAssist · Velocity
 **Inventory:** ChestStealer · InventorySorter
-**Utility:** ArrayList · ClientBrandChanger · Weapon · AutoTool
+**Utility:** ArrayList · ClientBrandChanger · Weapon · **AutoTool** 🆕
+
+### New modules added in this fork (not in upstream Fusion+)
+
+| Module | Category | What it does |
+|---|---|---|
+| **KillAura** 🆕 | Combat | Auto-targets the nearest enemy and attacks them with humanised rotations + click pacing. v0.1 visibly rotates (bannable); use the **Apply Legit Preset** button for a tighter envelope. |
+| **TriggerBot** 🆕 | Combat | Fires synthetic LMB clicks when *your own* crosshair is on a hitbox. No rotation manipulation — pairs safely with AimAssist. |
+| **AutoTool** 🆕 | Utility | Switches to the best mining tool for the block being mined; switches back when LMB releases. |
+
+### Significantly upgraded modules
+
+| Module | Category | What changed |
+|---|---|---|
+| **Reach** | Combat | Upstream was a stub that did nothing — replaced with a real ray-vs-AABB extended-melee implementation (CPS pacing, weapon-only, visibility check, friend-ignore, LMB-gate). |
+
 
 ## Layout
 
