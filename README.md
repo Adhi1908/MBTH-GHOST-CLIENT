@@ -98,3 +98,8 @@ This is a public binary built from public source. It will be hash-flagged by sig
 
 The author of this fork takes no responsibility for bans, account loss, or anything else that happens when you use this code.
 
+## Credits
+
+MBTH Ghost Client is a fork of **[Fusion+](https://github.com/h1meji/fusion-plus)** by **Himeji**, with additional contributions from **11Luke11** and **Autocliicker**. All upstream work is preserved under its original license — see `LICENSE`.
+
+
