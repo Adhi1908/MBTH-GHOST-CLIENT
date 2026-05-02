@@ -98,11 +98,3 @@ This is a public binary built from public source. It will be hash-flagged by sig
 
 The author of this fork takes no responsibility for bans, account loss, or anything else that happens when you use this code.
 
-## Credits
-
-- **[h1meji/fusion-plus](https://github.com/h1meji/fusion-plus)** — the upstream this is forked from
-- **[6470bru/fusion](https://github.com/6470bru/fusion)** — the original Fusion by deity & [redacted]
-- **[CCBlueX/LiquidBounce (legacy)](https://github.com/CCBlueX/LiquidBounce/tree/legacy)** — the canonical open-source 1.8 KillAura that the rotation algorithm is ported from
-- **[K-ov/Raven](https://github.com/K-ov/Raven)** — the small reference KillAura we cross-checked against
-- **[katursis/StringObfuscator](https://github.com/katursis/StringObfuscator)** — the basis of the planned `OBFS()` macro (MIT)
-- **Fusion+ contributors:** Himeji, 11Luke11, Autocliicker
