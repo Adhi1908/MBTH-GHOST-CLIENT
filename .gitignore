@@ -41,3 +41,6 @@ desktop.ini
 # User-local artifacts you don't want public
 research/cache/
 local_notes/
+_commit.bat
+_*.bat
+

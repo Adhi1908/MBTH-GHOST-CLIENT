@@ -1,8 +1,9 @@
 # MBTH Ghost Client
 
-> A LiquidBounce-research-grounded fork of [Fusion+](https://github.com/h1meji/fusion-plus) with extra combat modules, humanised aim/click pacing, an in-game module search, notification sounds, configurable presets, and a fully-documented KillAura design + anti-signature plan.
+> Minecraft 1.7.10 / 1.8.9 utility client with combat modules, humanised aim/click pacing, an in-game module search, notification sounds, and configurable presets.
 >
 > **Status:** Educational / personal research. KillAura visible-rotation v0.1 is **detectable on Hypixel** — the safe combat stack is **AimAssist + TriggerBot**.
+
 
 ---
 
@@ -11,14 +12,17 @@
 | Module / change | Status | Notes |
 |---|---|---|
 | **TriggerBot** | new | Auto-attacks the entity already under your crosshair while LMB is held. **No rotation manipulation** — server sees only clean swings + C02 packets. Pairs with AimAssist for the safest combat envelope. |
-| **KillAura v0.1** | new (visible-rotation) | Full LiquidBounce-equivalent target picker + humanisation pipeline (per-axis speed limit, ±10% imperfect correlation, ±3% yaw / ±2% pitch jitter, slow-down lerp, GCD quantisation, optional short-stop). Ships with an "Apply Legit Preset" button + big red BANNABLE warning. **Silent rotation (JVMTI sendPacket hook) is the v0.2 milestone.** |
-| **Reach (rewrite)** | upgrade | The upstream module was a stub — replaced with a real ray-vs-AABB extended-melee implementation gated by CPS / weapon / visibility / friend / LMB. |
-| **AutoTool** | port from Raven b++ | Switches to best mining tool for the block being mined; switches back when LMB releases. |
+| **KillAura v0.1** | new (visible-rotation) | Full target picker + humanisation pipeline (per-axis speed limit, ±10% imperfect correlation, ±3% yaw / ±2% pitch jitter, slow-down lerp, GCD quantisation, optional short-stop). Ships with an "Apply Legit Preset" button + big red BANNABLE warning. Silent rotation is the v0.2 milestone. |
+
+| **Reach (rewrite)** | upgrade | Replaced with a real ray-vs-AABB extended-melee implementation gated by CPS / weapon / visibility / friend / LMB. |
+| **AutoTool** | new | Switches to best mining tool for the block being mined; switches back when LMB releases. |
+
 | **Notification sounds** | new | Per-type Windows MessageBeep, with a "Test sounds" button in HUD settings. |
 | **Module search bar** | new | Top of menu — type to filter modules across all categories with click-to-jump. |
 | **Per-module descriptions + tooltips** | new | Every module exposes a one-line description shown on hover. |
 | **Hypixel-Legit / Hypixel-Safe configs** | new | Two pre-tuned `.fusion` configs for legit-style PvP. |
-| **MBTH branding** | new | All user-visible `Fusion+` strings rebranded to `MBTH`. Internal paths and config-file extension preserved for backwards compatibility with Fusion+ configs. |
+| **MBTH branding** | new | Internal paths and config-file extension preserved for backwards compatibility. |
+
 
 ## The safe combat stack
 
@@ -30,12 +34,8 @@ TriggerBot (LMB-only, players-only, 150 ms reaction-hold, 6–11 CPS, weapon-onl
 
 Watchdog has no rotation-velocity / aim-modulus / dup-rotation surface to inspect because **TriggerBot never publishes a rotation we authored** — it only fires a synthetic LMB when the user's own aim is on a hitbox. Load the `Hypixel-Safe.fusion` preset to enable this stack with conservative defaults.
 
-## What's documented
-
-- **`KILLAURA_DESIGN.md`** — full research write-up grounded in cached LiquidBounce legacy source files (KillAura.kt 1324 LOC, RotationUtils.kt 786 LOC, RotationSettings.kt, two Mixins). Section 8 covers anti-signature hardening (compile-time string XOR via katursis/StringObfuscator, per-build randomised DLL filename + symbols + XOR keys, PDB stripping, source-only distribution model). Every algorithm and default value is cited to a specific file:line in either Raven b++ or LiquidBounce.
-- **`research/`** — local copies of all references used: LiquidBounce KillAura.kt / RotationUtils.kt / Rotation.kt / RotationSettings.kt / MixinNetworkManager.java / MixinEntityPlayerSP.java + katursis/StringObfuscator's full source + Visionfuscator README. No claim in the design doc is unverifiable.
-
 ## Build
+
 
 Requires Visual Studio 2019 / 2022 with **v142 toolset** + Windows 10 SDK.
 
@@ -79,22 +79,22 @@ fusion-plus/                  C++ DLL — the actual cheat
     modules/movement/         Sprint*, BridgeAssist, Velocity
     modules/inventory/        ChestStealer, InventorySorter
     modules/utility/          ArrayList, ClientBrandChanger, Weapon, AutoTool
-  src/base/util/math/         rotationUtils.{h,cpp}  ← LiquidBounce port
+  src/base/util/math/         rotationUtils.{h,cpp}  humanised rotation pipeline
   src/base/sdk/               C++ wrappers for Minecraft Java classes (JNI/JVMTI)
+
   src/base/configManager/     settings + JSON serialise/deserialise
   src/base/menu/              ImGui rendering + window hooks
   src/base/notificationManager Toast notifications + Windows beeps
 
 fusion-injector/              Standalone injector .exe (Dear ImGui)
 asm/                          ASM patches for the Java side (legacy)
-research/                     LiquidBounce + obfuscator reference sources (cached)
-KILLAURA_DESIGN.md            Full research + design doc (start here)
-STYLE_GUIDE.md                Inherited from Fusion+
 ```
+
 
 ## ⚠️ Use at your own risk
 
-This is a public binary built from public source. It will be hash-flagged by signature-aware anti-cheats. Section 8 of `KILLAURA_DESIGN.md` documents the planned anti-signature stack (compile-time string obfuscation, per-build randomization, PDB stripping, source-only distribution). Until that ships, the safe assumption is that **any account you use this on can be banned**. Don't use it on accounts you're not willing to lose.
+This is a public binary built from public source. It will be hash-flagged by signature-aware anti-cheats. The safe assumption is that **any account you use this on can be banned**. Don't use it on accounts you're not willing to lose.
+
 
 The author of this fork takes no responsibility for bans, account loss, or anything else that happens when you use this code.
 
