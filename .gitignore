@@ -1,0 +1,43 @@
+# Build output
+fusion-plus/build/
+fusion-injector/build/
+**/build/etc/
+*.dll
+*.exe
+*.pdb
+*.lib
+*.exp
+*.ilk
+*.idb
+*.obj
+*.tlog
+*.lastbuildstate
+*.unsuccessfulbuild
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.opendb
+*.vsidx
+*.recipe
+
+# IDE / editor
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Archives / temp
+*.zip
+*.7z
+*.rar
+*.bak
+*.tmp
+
+# User-local artifacts you don't want public
+research/cache/
+local_notes/
